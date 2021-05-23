@@ -8,7 +8,7 @@ public class Contact {
     private String email;
     private String companyName;
 
-    private static Integer idCounterC = 0;
+    private static Integer idCounterC = 1;
 
     public Contact(Lead lead){
 

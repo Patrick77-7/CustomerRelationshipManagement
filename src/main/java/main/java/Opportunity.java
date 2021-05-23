@@ -18,7 +18,6 @@ public class Opportunity {
     private Products truck;
     private Integer quantity;
     private Status sold;
-   // private Account account;
 
     public Opportunity(Contact decisionMaker, Products truck, Integer quantity, Status sold) {
         setOpportunityId();
@@ -28,7 +27,7 @@ public class Opportunity {
         this.sold = sold;
     }
 
-    private static Integer idCounterO = 0;
+    private static Integer idCounterO = 1;
 
     public static Integer createID() {
         return idCounterO++;

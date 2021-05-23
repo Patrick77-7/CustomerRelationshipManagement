@@ -5,7 +5,7 @@ package main.java;
 public class Lead {
     private String leadId;
     private String name;
-    private String phoneNumber; // <-- int oder String? Falls jemand sowas wie +49 eintippt? Maxi: String würde ich sagen!
+    private String phoneNumber;
     private String email;
     private String companyName;
 
@@ -19,8 +19,9 @@ public class Lead {
         setLeadId();
     }
 
+
     //Create Ongoing ID
-    private static Integer idCounterL = 0;
+    private static Integer idCounterL = 1;
 
     public static Integer createID() {
         return idCounterL++;
@@ -79,5 +80,14 @@ public class Lead {
         this.leadId = "L " + newId;
     }
 
-
+    @Override
+    public String toString() {
+        return "Lead{" +
+                "Id='" + leadId + '\'' +
+                ", Name ='" + name + '\'' +
+                ", Phone Number='" + phoneNumber + '\'' +
+                ", Email Address='" + email + '\'' +
+                ", Company Name='" + companyName + '\'' +
+                '}';
+    }
 }
