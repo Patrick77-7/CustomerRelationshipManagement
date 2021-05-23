@@ -19,6 +19,26 @@ public class Lead {
         setLeadId();
     }
 
+    public Lead() {
+        setLeadId();
+    }
+
+    // create new Lead
+
+    public void createNewLead(){
+        System.out.println("Name of Lead:");
+        String name = Menu.getStringInput();
+        setName(name);
+        System.out.println("Phone number of Lead:");
+        String phoneNumber = Menu.getStringInput();
+        setPhoneNumber(phoneNumber);
+        System.out.println("Email address of Lead:");
+        String email = Menu.getStringInput();
+        setEmail(email);
+        System.out.println("Company of Lead:");
+        String companyName = Menu.getStringInput();
+        setCompanyName(companyName);
+    }
 
     //Create Ongoing ID
     private static Integer idCounterL = 1;

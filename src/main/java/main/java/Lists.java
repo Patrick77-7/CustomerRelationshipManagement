@@ -24,13 +24,15 @@ public class Lists {
     // Show all List
 
     public String showInfoAllLeads() {
-        Integer lastId = this.newHashmap.size();
+        Integer lastId = this.newHashmap.size()+1;
         String allInfo = "";
-        for (int i = 0; i < lastId; i++) {
+        for (int i = 1; i < lastId; i++) {
             allInfo = allInfo + this.newHashmap.get("L " + i).getInfo() + "\n";
         }
         return allInfo;
     }
+
+
     public String showInfoAllContacts() {
         Integer lastId = this.newHashmap.size();
         String allInfo = "";
@@ -39,6 +41,7 @@ public class Lists {
         }
         return allInfo;
     }
+
     public String showInfoAllOpportunity() {
         Integer lastId = this.newHashmap.size();
         String allInfo = "";
