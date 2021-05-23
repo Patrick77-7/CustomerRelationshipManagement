@@ -11,11 +11,32 @@ decisionMaker - a Contact
 status - an Enum with options OPEN, CLOSED_WON, CLOSED_LOST (these are common sales terms indicating an ongoing potential sale, a sale,
 and an opportunity where a sale was not made and the sale is no longer a possibility)
  */
-public class Opportunity extends Leads { //<-- wenn ein Lead umgewandelt wird, werden die Probs (Name, Tel,etc) übernommen. Die können wir doch so nutzen
+public class Opportunity {
 
-    private int opportuniyId;
-    private Products product;
-    private int quantity;
-    private Contact contact; //decisionMaker
-    private Status status;
+    private String opportunityId;
+    private Contact decisionMaker;
+    private Products truck;
+    private Integer quantity;
+    private Status sold;
+   // private Account account;
+
+    public Opportunity(Contact decisionMaker, Products truck, Integer quantity, Status sold) {
+        setOpportunityId();
+        this.decisionMaker = decisionMaker;
+        this.truck = truck;
+        this.quantity = quantity;
+        this.sold = sold;
+    }
+
+    private static Integer idCounterO = 0;
+
+    public static Integer createID() {
+        return idCounterO++;
+    }
+
+    public void setOpportunityId() {
+        Integer newId = createID();
+        this.opportunityId = "C " + newId;
+    }
+
 }

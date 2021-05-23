@@ -15,11 +15,11 @@ opportunityList - a list of Opportunities associated with this Account
  */
 public class Account {
 
-    private int accountId;
+    private Integer accountId;
     private Industry industry;
     private int employeeCount;
     private String city;
-    private String county;
-    private ArrayList contactList;
-    private ArrayList opportunityList;
+    private String country;
+    private ArrayList<Contact> contactList;
+    private ArrayList<Opportunity> opportunityList;
 }
