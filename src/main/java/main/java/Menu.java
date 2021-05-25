@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
 
     Lists leadList;
 
-    public void showMenu(){
+    public void showMenu() {
 
         System.out.println("\n");
         System.out.println("Welcome to CRM Application!");
@@ -20,13 +21,13 @@ public class Menu {
 
         boolean exit = false;
 
-        while(!exit) {
+        while (!exit) {
             System.out.println("\n");
             System.out.println("What would you like to do?");
             String input = getStringInput();
 
 
-            if(processRegionMatches("import list", input)){
+            if (processRegionMatches("import list", input)) {
                 try {
                     HashMap<String, Lead> z = leadList.importList();
                     leadList.setNewHashmap(z);
@@ -53,35 +54,53 @@ public class Menu {
             }
         }
 
-        }
+    }
 
 
-    public static Opportunity convertLeadToOpportunity(Lead lead){
+    public static Opportunity convertLeadToOpportunity(Lead lead) {
         Contact x = new Contact(lead);
-        String s = getStringInput();
-        Products y;
-        switch(s){
-            case "hybrid": y = Products.HYBRID;
-            break;
-            case "flatbed": y = Products.FLATBED;
-                break;
-            case "box": y = Products.BOX;
-                break;
-            default: y = null;
+        Products y = null;
+        boolean inputRequiredProduct = false;
+        while (inputRequiredProduct = !true) {
+            System.out.println("Please Insert the Type of Product the Customer is Interesetd in:");
+            String s = getStringInput();
+
+            switch (s) {
+                case "hybrid":
+                    y = Products.HYBRID;
+                    inputRequiredProduct = true;
+                    break;
+                case "flatbed":
+                    y = Products.FLATBED;
+                    inputRequiredProduct = true;
+                    break;
+                case "box":
+                    y = Products.BOX;
+                    inputRequiredProduct = true;
+                    break;
+                default:
+                    System.out.println("Please Enter hybrid, flatbed or box");
+            }
+        }
+        int ammountOfProducts = 0;
+        boolean inputRequiredAmmount = false;
+        while (inputRequiredAmmount = !true) {
+            System.out.println("How many instances does the Customer intents to buy:");
+            try {
+                ammountOfProducts = Integer.parseInt(getStringInput());
+                inputRequiredAmmount = true;
+
+            } catch (InputMismatchException ime) {
+                System.out.println("Please Enter a Number");
+            }
         }
 
-
-
-        Opportunity opportunity = new Opportunity(x,y, 213);
+        Opportunity opportunity = new Opportunity(x, y, ammountOfProducts);
         return opportunity;
     }
 
 
-
-
-
-
-    public static String getStringInput(){
+    public static String getStringInput() {
         Scanner scan = new Scanner(System.in);
         String output = scan.nextLine();
         return output;
@@ -93,7 +112,6 @@ public class Menu {
                 return true;
         return false;
     }
-
 
 
 }

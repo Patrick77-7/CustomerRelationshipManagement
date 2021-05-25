@@ -17,7 +17,6 @@ public class Lists {
     }
 
     // Put into List
-
     public void addToList(String Id, Lead Lead) {
         this.newHashmap.put(Id, Lead);
     }
@@ -25,6 +24,11 @@ public class Lists {
     //
 
     public void removeFromList(String Id){
+        this.newHashmap.remove(Id);
+    }
+
+    //    remove from List
+    public void removeFromList(String Id) {
         this.newHashmap.remove(Id);
     }
 
@@ -86,33 +90,33 @@ public class Lists {
         BufferedReader br = new BufferedReader(new FileReader(this.getName()));
         String line = null;
         HashMap<String, Lead> map = new HashMap<>();
-        while((line=br.readLine()).contains("L")) {
+        while ((line = br.readLine()).contains("L")) {
             String str[] = line.split(";");
             for (int i = 0; i < str.length; i++) {
-                map.put(str[0], new Lead(str[0],str[1], str[2], str[3], str[4]));
+                map.put(str[0], new Lead(str[0], str[1], str[2], str[3], str[4]));
             }
         }
         return map;
     }
 
 
-        //Getter and Setter
+    //Getter and Setter
 
-        public HashMap<String, Lead> getNewHashmap () {
-            return newHashmap;
-        }
+    public HashMap<String, Lead> getNewHashmap() {
+        return newHashmap;
+    }
 
-        public void setNewHashmap (HashMap < String, Lead > newHashmap){
-            this.newHashmap = newHashmap;
-        }
+    public void setNewHashmap(HashMap<String, Lead> newHashmap) {
+        this.newHashmap = newHashmap;
+    }
 
 
-        public String getName () {
-            return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setName (String name){
-            this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }
