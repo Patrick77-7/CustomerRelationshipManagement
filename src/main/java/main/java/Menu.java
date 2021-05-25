@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Lists leadList;
+    public Lists leadList;
 
     public void showMenu() {
 
@@ -57,7 +57,7 @@ public class Menu {
     }
 
 
-    public static Opportunity convertLeadToOpportunity(Lead lead) {
+    public Opportunity convertLeadToOpportunity(Lead lead) {
         Contact x = new Contact(lead);
         Products y = null;
         boolean inputRequiredProduct = false;
@@ -94,8 +94,8 @@ public class Menu {
                 System.out.println("Please Enter a Number");
             }
         }
-
         Opportunity opportunity = new Opportunity(x, y, ammountOfProducts);
+        leadList.removeFromList(lead.getLeadId());
         return opportunity;
     }
 

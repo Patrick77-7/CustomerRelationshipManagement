@@ -21,12 +21,6 @@ public class Lists {
         this.newHashmap.put(Id, Lead);
     }
 
-    //
-
-    public void removeFromList(String Id){
-        this.newHashmap.remove(Id);
-    }
-
     //    remove from List
     public void removeFromList(String Id) {
         this.newHashmap.remove(Id);
