@@ -41,7 +41,10 @@ public class Menu {
             } else if (processRegionMatches("Show Leads", input)) {
                 System.out.println(leadList.showInfoAllLeads());
             } else if (processRegionMatches("convert", input)) {
-                // ...
+                System.out.println("Type in ID of lead that is to be converted: ");
+                String IdInput = getStringInput();
+                Lead lead = leadList.getNewHashmap().get(IdInput);
+                convertLeadToOpportunity(lead);
             } else if (processRegionMatches("Lookup Lead Id", input)) {
                 System.out.println("Type in ID ");
                 String IdInput = getStringInput();
@@ -58,11 +61,11 @@ public class Menu {
 
 
     public Opportunity convertLeadToOpportunity(Lead lead) {
-        Contact x = new Contact(lead);
+        Contact x = new Contact(lead); // needs to be added to Contact-List of an account?
         Products y = null;
         boolean inputRequiredProduct = false;
-        while (inputRequiredProduct = !true) {
-            System.out.println("Please Insert the Type of Product the Customer is Interesetd in:");
+        while (inputRequiredProduct == !true) {
+            System.out.println("Please insert the Type of Product the Customer is interested in:");
             String s = getStringInput();
 
             switch (s) {
@@ -82,19 +85,19 @@ public class Menu {
                     System.out.println("Please Enter hybrid, flatbed or box");
             }
         }
-        int ammountOfProducts = 0;
+        int amountOfProducts = 0;
         boolean inputRequiredAmmount = false;
-        while (inputRequiredAmmount = !true) {
-            System.out.println("How many instances does the Customer intents to buy:");
+        while (inputRequiredAmmount == !true) {
+            System.out.println("How many instances does the Customer intends to buy:");
             try {
-                ammountOfProducts = Integer.parseInt(getStringInput());
+                amountOfProducts = Integer.parseInt(getStringInput());
                 inputRequiredAmmount = true;
 
             } catch (InputMismatchException ime) {
                 System.out.println("Please Enter a Number");
             }
         }
-        Opportunity opportunity = new Opportunity(x, y, ammountOfProducts);
+        Opportunity opportunity = new Opportunity(x, y, amountOfProducts); // needs to be added to an Opportunity-List of an Account?
         leadList.removeFromList(lead.getLeadId());
         return opportunity;
     }
