@@ -39,6 +39,40 @@ public class Lists {
         }
         return allInfo;
     }
+
+    // export List
+
+//    public void exportList() {
+//        FileWriter x;
+//        try {
+//            x = new FileWriter(this.getName());
+//            Integer lastId = this.newHashmap.size() + 1;
+//            for (int i = 1; i < lastId; i++) {
+//                x.write(this.newHashmap.get("L " + i).getInfo() + "\n");
+//            }
+////            x.write("\n" + "This list contains " + (lastId-1) + " leads");
+//            x.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    // import list
+//
+//    public HashMap<String, Lead> importList() throws IOException {
+//        BufferedReader br = new BufferedReader(new FileReader(this.getName()));
+//        String line = null;
+//        HashMap<String, Lead> map = new HashMap<>();
+//        while ((line = br.readLine()).contains("L")) {
+//            String str[] = line.split(";");
+//            for (int i = 0; i < str.length; i++) {
+//                map.put(str[0], new Lead(str[0], str[1], str[2], str[3], str[4]));
+//            }
+//        }
+//        return map;
+//    }
+
+
     public String showInfoAllOppertunity() {
         Integer lastId = this.newHashmap.size();
         String allInfo = "";
