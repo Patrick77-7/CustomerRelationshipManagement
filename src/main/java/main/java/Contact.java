@@ -20,6 +20,11 @@ public class Contact{
         this.companyName = lead.getCompanyName();
         this.phoneNumber = lead.getPhoneNumber();
         setId();
+        lead.seteMail(null);
+        lead.setId(null);
+        lead.setCompanyName(null);
+        lead.setName(null);
+        lead.setPhoneNumber(null);
     }
 
     public static Integer createID() {
