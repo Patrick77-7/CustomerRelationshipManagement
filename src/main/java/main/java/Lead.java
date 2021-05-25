@@ -12,16 +12,26 @@ public class Lead {
     //Constructor
 
     public Lead(String name, String phoneNumber, String email, String companyName) {
+        setLeadId();
         setName(name);
         setEmail(email);
         setCompanyName(companyName);
         setPhoneNumber(phoneNumber);
-        setLeadId();
+    }
+
+    public Lead(String leadId, String name, String phoneNumber, String email, String companyName) {
+        this.leadId = leadId;
+        setName(name);
+        setEmail(email);
+        setCompanyName(companyName);
+        setPhoneNumber(phoneNumber);
     }
 
     public Lead() {
         setLeadId();
     }
+
+
 
     // create new Lead
 
@@ -51,7 +61,7 @@ public class Lead {
     // setter + getter
 
     public String getInfo() {
-        return this.getName() + " " + this.getEmail() + " " + this.getCompanyName() + " " + this.getPhoneNumber() + " " + this.getLeadId();
+        return this.getLeadId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();
     }
 
 
@@ -95,10 +105,13 @@ public class Lead {
         this.leadId = leadId;
     }
 
+
     public void setLeadId() {
         Integer newId = createID();
         this.leadId = "L " + newId;
     }
+
+
 
     @Override
     public String toString() {

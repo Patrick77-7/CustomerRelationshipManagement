@@ -1,14 +1,23 @@
 package main.java;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {
-    Lists leads = new Lists();
 
+    Lists leadList;
 
     public void showMenu(){
+
         System.out.println("\n");
         System.out.println("Welcome to CRM Application!");
+
+        leadList = new Lists("Lead-List");
+
         boolean exit = false;
 
         while(!exit) {
@@ -16,20 +25,29 @@ public class Menu {
             System.out.println("What would you like to do?");
             String input = getStringInput();
 
-            if (processRegionMatches("New Lead", input)) {
+
+            if(processRegionMatches("import list", input)){
+                try {
+                    HashMap<String, Lead> z = leadList.importList();
+                    leadList.setNewHashmap(z);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (processRegionMatches("New Lead", input)) {
                 Lead lead = new Lead();
                 lead.createNewLead();
-                leads.addToList(lead.getLeadId(), lead);
+                leadList.addToList(lead.getLeadId(), lead);
             } else if (processRegionMatches("Show Leads", input)) {
-                System.out.println(leads.showInfoAllLeads());
+                System.out.println(leadList.showInfoAllLeads());
             } else if (processRegionMatches("convert", input)) {
                 // ...
             } else if (processRegionMatches("Lookup Lead Id", input)) {
                 System.out.println("Type in ID ");
                 String IdInput = getStringInput();
-                System.out.println(leads.showInfo(IdInput));
+                System.out.println(leadList.showInfo(IdInput));
             } else if (processRegionMatches("exit", input)) {
                 exit = true;
+                leadList.exportList();
             } else {
                 System.out.println("Input unknown");
             }
@@ -52,5 +70,7 @@ public class Menu {
                 return true;
         return false;
     }
+
+
 
 }
