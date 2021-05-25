@@ -35,7 +35,7 @@ public class Opportunity {
 
     public void setOpportunityId() {
         Integer newId = createID();
-        this.opportunityId = "C " + newId;
+        this.opportunityId = "O " + newId;
     }
 
     public String getOpportunityId() {
