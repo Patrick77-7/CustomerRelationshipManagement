@@ -15,16 +15,16 @@ public class Opportunity {
 
     private String opportunityId;
     private Contact decisionMaker;
-    private Products truck;
+    private Products product;
     private Integer quantity;
-    private Status sold;
+    private Status status;
 
-    public Opportunity(Contact decisionMaker, Products truck, Integer quantity, Status sold) {
+    public Opportunity(Contact decisionMaker, Products product, Integer quantity) {
         setOpportunityId();
         this.decisionMaker = decisionMaker;
-        this.truck = truck;
+        this.product = product;
         this.quantity = quantity;
-        this.sold = sold;
+        this.status = Status.OPEN;
     }
 
     private static Integer idCounterO = 1;
@@ -38,4 +38,51 @@ public class Opportunity {
         this.opportunityId = "C " + newId;
     }
 
+    public String getOpportunityId() {
+        return opportunityId;
+    }
+
+    public void setOpportunityId(String opportunityId) {
+        this.opportunityId = opportunityId;
+    }
+
+    public Contact getDecisionMaker() {
+        return decisionMaker;
+    }
+
+    public void setDecisionMaker(Contact decisionMaker) {
+        this.decisionMaker = decisionMaker;
+    }
+
+    public Products getProduct() {
+        return product;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public static Integer getIdCounterO() {
+        return idCounterO;
+    }
+
+    public static void setIdCounterO(Integer idCounterO) {
+        Opportunity.idCounterO = idCounterO;
+    }
 }

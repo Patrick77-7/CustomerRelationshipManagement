@@ -56,6 +56,29 @@ public class Menu {
         }
 
 
+    public static Opportunity convertLeadToOpportunity(Lead lead){
+        Contact x = new Contact(lead);
+        String s = getStringInput();
+        Products y;
+        switch(s){
+            case "hybrid": y = Products.HYBRID;
+            break;
+            case "flatbed": y = Products.FLATBED;
+                break;
+            case "box": y = Products.BOX;
+                break;
+            default: y = null;
+        }
+
+
+
+        Opportunity opportunity = new Opportunity(x,y, 213);
+        return opportunity;
+    }
+
+
+
+
 
 
     public static String getStringInput(){

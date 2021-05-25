@@ -15,10 +15,17 @@ public class Lists {
     public Lists(String name) {
         this.name = name;
     }
+
     // Put into List
 
     public void addToList(String Id, Lead Lead) {
         this.newHashmap.put(Id, Lead);
+    }
+
+    //
+
+    public void removeFromList(String Id){
+        this.newHashmap.remove(Id);
     }
 
     //Show Info LookUpLead
