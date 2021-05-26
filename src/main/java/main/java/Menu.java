@@ -31,21 +31,21 @@ public class Menu {
             if (processRegionMatches("import list", input)) {
                 try {
                     HashMap<String, Lead> z = leadList.importList();
-                    leadList.setLeadHashMap(z);
+                    //leadList.setCRMHashMap(z);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else if (processRegionMatches("New Lead", input)) {
                 Lead lead = new Lead();
                 lead.createNewLead();
-                leadList.addToList(lead.getLeadId(), lead);
+                leadList.addToList(lead.getId(), lead);
             } else if (processRegionMatches("Show Leads", input)) {
-                System.out.println(leadList.showInfoAllLeads());
+                //System.out.println(leadList.showInfoAllLeads());
             } else if (processRegionMatches("convert", input)) {
                 System.out.println("Type in ID of lead that is to be converted: ");
                 String IdInput = getStringInput();
-                Lead lead = leadList.getLeadHashMap().get(IdInput);
-                convertLeadToOpportunity(lead);
+                //Lead lead = leadList.getCRMHashMap().get(IdInput);
+                //convertLeadToOpportunity(lead);
             } else if (processRegionMatches("Lookup Lead Id", input)) {
                 System.out.println("Type in ID ");
                 String IdInput = getStringInput();
@@ -99,7 +99,7 @@ public class Menu {
             }
         }
         Opportunity opportunity = new Opportunity(x, y, amountOfProducts); // needs to be added to an Opportunity-List of an Account?
-        leadList.removeFromList(lead.getLeadId());
+        leadList.removeFromList(lead.getId());
         return opportunity;
     }
 

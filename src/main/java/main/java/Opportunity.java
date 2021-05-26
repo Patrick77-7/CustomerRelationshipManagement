@@ -11,40 +11,26 @@ decisionMaker - a Contact
 status - an Enum with options OPEN, CLOSED_WON, CLOSED_LOST (these are common sales terms indicating an ongoing potential sale, a sale,
 and an opportunity where a sale was not made and the sale is no longer a possibility)
  */
-public class Opportunity {
+public class Opportunity extends CRMObject{
 
-    private String opportunityId;
     private Contact decisionMaker;
     private Products product;
     private Integer quantity;
     private Status status;
 
+
     public Opportunity(Contact decisionMaker, Products product, Integer quantity) {
-        setOpportunityId();
+        super("O");
         this.decisionMaker = decisionMaker;
         this.product = product;
         this.quantity = quantity;
         this.status = Status.OPEN;
     }
-
-    private static Integer idCounterO = 1;
-
-    public static Integer createID() {
-        return idCounterO++;
+    public Opportunity(){
+        super("O");
     }
 
-    public void setOpportunityId() {
-        Integer newId = createID();
-        this.opportunityId = "O " + newId;
-    }
-
-    public String getOpportunityId() {
-        return opportunityId;
-    }
-
-    public void setOpportunityId(String opportunityId) {
-        this.opportunityId = opportunityId;
-    }
+    //Getter and Setter
 
     public Contact getDecisionMaker() {
         return decisionMaker;
@@ -76,13 +62,5 @@ public class Opportunity {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public static Integer getIdCounterO() {
-        return idCounterO;
-    }
-
-    public static void setIdCounterO(Integer idCounterO) {
-        Opportunity.idCounterO = idCounterO;
     }
 }

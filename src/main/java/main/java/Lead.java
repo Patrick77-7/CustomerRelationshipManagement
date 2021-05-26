@@ -2,7 +2,7 @@ package main.java;
 
 
 
-public class Lead {
+public class Lead extends CRMObject {
     private String leadId;
     private String name;
     private String phoneNumber;
@@ -12,7 +12,7 @@ public class Lead {
     //Constructor
 
     public Lead(String name, String phoneNumber, String email, String companyName) {
-        setLeadId();
+        super("L");
         setName(name);
         setEmail(email);
         setCompanyName(companyName);
@@ -20,7 +20,7 @@ public class Lead {
     }
 
     public Lead(String leadId, String name, String phoneNumber, String email, String companyName) {
-        this.leadId = leadId;
+        super("L", leadId);
         setName(name);
         setEmail(email);
         setCompanyName(companyName);
@@ -28,7 +28,7 @@ public class Lead {
     }
 
     public Lead() {
-        setLeadId();
+        super("L");
     }
 
 
@@ -50,18 +50,10 @@ public class Lead {
         setCompanyName(companyName);
     }
 
-    //Create Ongoing ID
-    private static Integer idCounterL = 1;
-
-    public static Integer createID() {
-        return idCounterL++;
-    }
-
-
     // setter + getter
 
     public String getInfo() {
-        return this.getLeadId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();
+        return this.getId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();
     }
 
 
@@ -95,20 +87,6 @@ public class Lead {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public String getLeadId() {
-        return leadId;
-    }
-
-    public void setLeadId(String leadId) {
-        this.leadId = leadId;
-    }
-
-
-    public void setLeadId() {
-        Integer newId = createID();
-        this.leadId = "L " + newId;
     }
 
 

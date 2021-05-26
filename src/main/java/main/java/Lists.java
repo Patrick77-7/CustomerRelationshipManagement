@@ -5,9 +5,8 @@ import java.util.HashMap;
 
 public class Lists {
     private String name;
-    HashMap<String, Lead> leadHashMap = new HashMap<>();
-    HashMap<String, Opportunity> opportunityHashMap = new HashMap<>();
-    HashMap<String, Contact> contactHashMap = new HashMap<>();
+    HashMap<String, CRMObject> CRMHashMap = new HashMap<>();
+
 
 
     //Constructor
@@ -20,59 +19,41 @@ public class Lists {
     }
 
     // Put into List
-    public void addToList(String Id, Lead Lead) {
-        this.leadHashMap.put(Id, Lead);
+    public void addToList(String Id, CRMObject object) {
+        this.CRMHashMap.put(Id, object);
     }
 
     //    remove from List
     public void removeFromList(String Id) {
-        this.leadHashMap.remove(Id);
+        this.CRMHashMap.remove(Id);
     }
 
     //Show Info LookUpLead
     public String showInfo(String Id) {
-        return this.leadHashMap.get(Id).getInfo();
+        return this.CRMHashMap.get(Id).getInfo();
     }
 
     // Show all List
 
-    public String showInfoAllLeads() {
-        Integer lastId = this.leadHashMap.size() + 1;
+    public String showAllLeads(String classLetter) {
+        Integer lastId = this.CRMHashMap.size() + 1;
         String allInfo = "";
         for (int i = 1; i < lastId; i++) {
-            allInfo = allInfo + this.leadHashMap.get("L " + i).getInfo() + "\n";
+            allInfo = allInfo + this.CRMHashMap.get(classLetter + " " + i).getInfo() + "\n";
         }
         return allInfo;
+
+        // get all Keys and loop throw keys
     }
-
-
-    public String showInfoAllContacts() {
-        Integer lastId = this.leadHashMap.size();
-        String allInfo = "";
-        for (int i = 0; i < lastId; i++) {
-            allInfo = allInfo + this.leadHashMap.get("C " + i).getInfo() + "\n";
-        }
-        return allInfo;
-    }
-
-    public String showInfoAllOpportunity() {
-        Integer lastId = this.leadHashMap.size();
-        String allInfo = "";
-        for (int i = 0; i < lastId; i++) {
-            allInfo = allInfo + this.leadHashMap.get("O " + i).getInfo() + "\n";
-        }
-        return allInfo;
-    }
-
     // export List
 
     public void exportList() {
         FileWriter x;
         try {
             x = new FileWriter(this.getName());
-            Integer lastId = this.leadHashMap.size() + 1;
+            Integer lastId = this.CRMHashMap.size() + 1;
             for (int i = 1; i < lastId; i++) {
-                x.write(this.leadHashMap.get("L " + i).getInfo() + "\n");
+                x.write(this.CRMHashMap.get("L " + i).getInfo() + "\n");
             }
 //            x.write("\n" + "This list contains " + (lastId-1) + " leads");
             x.close();
@@ -99,14 +80,13 @@ public class Lists {
 
     //Getter and Setter
 
-    public HashMap<String, Lead> getLeadHashMap() {
-        return leadHashMap;
+    public HashMap<String, CRMObject> getCRMHashMap() {
+        return CRMHashMap;
     }
 
-    public void setLeadHashMap(HashMap<String, Lead> leadHashMap) {
-        this.leadHashMap = leadHashMap;
+    public void setCRMHashMap(HashMap<String, CRMObject> CRMHashMap) {
+        this.CRMHashMap = CRMHashMap;
     }
-
 
     public String getName() {
         return name;
