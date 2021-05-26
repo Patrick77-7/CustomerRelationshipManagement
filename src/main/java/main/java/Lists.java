@@ -5,7 +5,10 @@ import java.util.HashMap;
 
 public class Lists {
     private String name;
-    HashMap<String, Lead> newHashmap = new HashMap<>();
+    HashMap<String, Lead> leadHashMap = new HashMap<>();
+    HashMap<String, Opportunity> opportunityHashMap = new HashMap<>();
+    HashMap<String, Contact> contactHashMap = new HashMap<>();
+
 
     //Constructor
 
@@ -18,45 +21,45 @@ public class Lists {
 
     // Put into List
     public void addToList(String Id, Lead Lead) {
-        this.newHashmap.put(Id, Lead);
+        this.leadHashMap.put(Id, Lead);
     }
 
     //    remove from List
     public void removeFromList(String Id) {
-        this.newHashmap.remove(Id);
+        this.leadHashMap.remove(Id);
     }
 
     //Show Info LookUpLead
     public String showInfo(String Id) {
-        return this.newHashmap.get(Id).getInfo();
+        return this.leadHashMap.get(Id).getInfo();
     }
 
     // Show all List
 
     public String showInfoAllLeads() {
-        Integer lastId = this.newHashmap.size() + 1;
+        Integer lastId = this.leadHashMap.size() + 1;
         String allInfo = "";
         for (int i = 1; i < lastId; i++) {
-            allInfo = allInfo + this.newHashmap.get("L " + i).getInfo() + "\n";
+            allInfo = allInfo + this.leadHashMap.get("L " + i).getInfo() + "\n";
         }
         return allInfo;
     }
 
 
     public String showInfoAllContacts() {
-        Integer lastId = this.newHashmap.size();
+        Integer lastId = this.leadHashMap.size();
         String allInfo = "";
         for (int i = 0; i < lastId; i++) {
-            allInfo = allInfo + this.newHashmap.get("C " + i).getInfo() + "\n";
+            allInfo = allInfo + this.leadHashMap.get("C " + i).getInfo() + "\n";
         }
         return allInfo;
     }
 
     public String showInfoAllOpportunity() {
-        Integer lastId = this.newHashmap.size();
+        Integer lastId = this.leadHashMap.size();
         String allInfo = "";
         for (int i = 0; i < lastId; i++) {
-            allInfo = allInfo + this.newHashmap.get("O " + i).getInfo() + "\n";
+            allInfo = allInfo + this.leadHashMap.get("O " + i).getInfo() + "\n";
         }
         return allInfo;
     }
@@ -67,9 +70,9 @@ public class Lists {
         FileWriter x;
         try {
             x = new FileWriter(this.getName());
-            Integer lastId = this.newHashmap.size() + 1;
+            Integer lastId = this.leadHashMap.size() + 1;
             for (int i = 1; i < lastId; i++) {
-                x.write(this.newHashmap.get("L " + i).getInfo() + "\n");
+                x.write(this.leadHashMap.get("L " + i).getInfo() + "\n");
             }
 //            x.write("\n" + "This list contains " + (lastId-1) + " leads");
             x.close();
@@ -96,12 +99,12 @@ public class Lists {
 
     //Getter and Setter
 
-    public HashMap<String, Lead> getNewHashmap() {
-        return newHashmap;
+    public HashMap<String, Lead> getLeadHashMap() {
+        return leadHashMap;
     }
 
-    public void setNewHashmap(HashMap<String, Lead> newHashmap) {
-        this.newHashmap = newHashmap;
+    public void setLeadHashMap(HashMap<String, Lead> leadHashMap) {
+        this.leadHashMap = leadHashMap;
     }
 
 

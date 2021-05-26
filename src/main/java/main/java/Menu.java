@@ -30,7 +30,7 @@ public class Menu {
             if (processRegionMatches("import list", input)) {
                 try {
                     HashMap<String, Lead> z = leadList.importList();
-                    leadList.setNewHashmap(z);
+                    leadList.setLeadHashMap(z);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -43,7 +43,7 @@ public class Menu {
             } else if (processRegionMatches("convert", input)) {
                 System.out.println("Type in ID of lead that is to be converted: ");
                 String IdInput = getStringInput();
-                Lead lead = leadList.getNewHashmap().get(IdInput);
+                Lead lead = leadList.getLeadHashMap().get(IdInput);
                 convertLeadToOpportunity(lead);
             } else if (processRegionMatches("Lookup Lead Id", input)) {
                 System.out.println("Type in ID ");

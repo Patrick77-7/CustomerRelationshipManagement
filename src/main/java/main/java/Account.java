@@ -22,4 +22,5 @@ public class Account {
     private String country;
     private ArrayList<Contact> contactList;
     private ArrayList<Opportunity> opportunityList;
+
 }
