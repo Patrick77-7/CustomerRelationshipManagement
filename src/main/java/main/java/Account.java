@@ -15,12 +15,95 @@ opportunityList - a list of Opportunities associated with this Account
  */
 public class Account {
 
-    private Integer accountId;
+    private String accountId;
     private Industry industry;
     private int employeeCount;
     private String city;
     private String country;
-    private ArrayList<Contact> contactList;
-    private ArrayList<Opportunity> opportunityList;
+    private ArrayList<Contact> contactList;  // muss gegen Lists-Objekt ausgetauscht werden
+    private ArrayList<Opportunity> opportunityList; // muss gegen Lists-Objekt ausgetauscht werden
 
+
+    public Account(Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+        setAccountId();
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+        this.contactList = contactList;
+        this.opportunityList = opportunityList;
+    }
+
+
+    //Create Ongoing ID
+    private static Integer idCounterL = 1;
+
+    public static Integer createID() {
+        return idCounterL++;
+    }
+
+
+
+    // getter + setter
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public void setAccountId() {
+        Integer newId = createID();
+        this.accountId = "A " + newId;
+    }
+
+    public Industry getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(Industry industry) {
+        this.industry = industry;
+    }
+
+    public int getEmployeeCount() {
+        return employeeCount;
+    }
+
+    public void setEmployeeCount(int employeeCount) {
+        this.employeeCount = employeeCount;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public ArrayList<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(ArrayList<Contact> contactList) {
+        this.contactList = contactList;
+    }
+
+    public ArrayList<Opportunity> getOpportunityList() {
+        return opportunityList;
+    }
+
+    public void setOpportunityList(ArrayList<Opportunity> opportunityList) {
+        this.opportunityList = opportunityList;
+    }
 }

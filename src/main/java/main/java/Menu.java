@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -101,6 +102,49 @@ public class Menu {
         leadList.removeFromList(lead.getLeadId());
         return opportunity;
     }
+
+
+    public void createNewAccount(){
+        System.out.println("Type in Industry: ");
+        String industryInput = getStringInput();
+        Industry y = null;
+        switch(industryInput){
+            case "1":
+                y = Industry.PRODUCE;
+                break;
+            case "2":
+                y = Industry.ECOMMERCE;
+                break;
+            case "3":
+                y = Industry.MANUFACTURING;
+                break;
+            case "4":
+                y = Industry.MEDICAL;
+                break;
+            default:
+                y = Industry.OTHER;
+                break;
+        }
+
+        System.out.println("Type in number of Employees: ");
+        String employeeInput = getStringInput();
+        int employeeCount = Integer.parseInt(employeeInput);
+
+        System.out.println("Type in city name: ");
+        String cityInput = getStringInput();
+
+        System.out.println("Type in country: ");
+        String countryInput = getStringInput();
+
+        ArrayList<Contact> contactList = new ArrayList<>();  // ggf. austauschen mit Lists-Object
+        ArrayList<Opportunity> opportunityList = new ArrayList<>(); // ggf. austauschen mit Lists-Object
+
+        Account x = new Account(y, employeeCount, cityInput, countryInput, contactList, opportunityList);
+    }
+
+//    public void associateExistingAccount(){
+//
+//    }
 
 
     public static String getStringInput() {
