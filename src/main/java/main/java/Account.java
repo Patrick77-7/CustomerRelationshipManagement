@@ -15,15 +15,14 @@ opportunityList - a list of Opportunities associated with this Account
  */
 public class Account extends CRMObject {
 
-    private String accountId;
     private Industry industry;
     private int employeeCount;
     private String city;
     private String country;
-    private ArrayList<Contact> contactList;  // muss gegen Lists-Objekt ausgetauscht werden
-    private ArrayList<Opportunity> opportunityList; // muss gegen Lists-Objekt ausgetauscht werden
+    private ArrayList<Contact> contactList;
+    private ArrayList<Opportunity> opportunityList;
 
-    public Account (String accountID, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+    public Account (String accountID, Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
         super("A", accountID);
         this.industry = industry;
         this.employeeCount = employeeCount;
