@@ -18,9 +18,9 @@ class LeadTest {
         Lead lead3= new Lead("name3","03012030zzzz","vorname3.nachname3@dkb.de","DKB");
 
 
-        assertTrue(lead1.getLeadId().equals("L 1"));
-        assertTrue(lead2.getLeadId().equals("L 2"));
-        assertTrue(lead3.getLeadId().equals("L 3"));
+        assertTrue(lead1.getId().equals("L1"));
+        assertTrue(lead2.getId().equals("L2"));
+        assertTrue(lead3.getId().equals("L3"));
 
     }
 
@@ -31,23 +31,23 @@ class LeadTest {
         Lead lead6= new Lead("name3","03012030zzzz","vorname3.nachname3@dkb.de","DKB");
 
 
-        assertTrue(lead4.getInfo().equals(lead4.getLeadId() + ";name;03012030xxxx;vorname.nachname@dkb.de;DKB"));
-        assertTrue(lead5.getInfo().equals(lead5.getLeadId() + ";name2;03012030yyyy;vorname2.nachname2@dkb.de;DKB"));
-        assertTrue(lead6.getInfo().equals(lead6.getLeadId() + ";name3;03012030zzzz;vorname3.nachname3@dkb.de;DKB"));
+        assertTrue(lead4.getInfo().equals(lead4.getId() + ";name;03012030xxxx;vorname.nachname@dkb.de;DKB"));
+        assertTrue(lead5.getInfo().equals(lead5.getId() + ";name2;03012030yyyy;vorname2.nachname2@dkb.de;DKB"));
+        assertTrue(lead6.getInfo().equals(lead6.getId() + ";name3;03012030zzzz;vorname3.nachname3@dkb.de;DKB"));
     }
 
     @Test
     void test3ToString(){
         Lead lead6= new Lead("name","03012030xxxx","vorname.nachname@dkb.de","DKB");
 
-        String testString = new String();
 
-        testString = "Lead{" +
-                    "Id='" + lead6.getLeadId() + '\'' +
-                    ", Name ='" + "name" + '\'' +
-                    ", Phone Number='" + "03012030xxxx" + '\'' +
-                    ", Email Address='" + "vorname.nachname@dkb.de" + '\'' +
-                    ", Company Name='" + "DKB" + '\'' +
+
+        String testString = "Lead{" +
+                    "Id='" + lead6.getId() + '\'' +
+                    ", Name ='" + lead6.getName() /*"name"*/ + '\'' +
+                    ", Phone Number='" + lead6.getPhoneNumber() /*"03012030xxxx" */ + '\'' +
+                    ", Email Address='" + lead6.getEmail()/*"vorname.nachname@dkb.de"*/ + '\'' +
+                    ", Company Name='" + lead6.getCompanyName() /*"DKB"*/ + '\'' +
                     '}';
 
         assertTrue(lead6.toString().equals(testString));

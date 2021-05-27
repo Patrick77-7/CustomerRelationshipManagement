@@ -20,10 +20,21 @@ class OpportunityTest {
         Opportunity opportunity1 = new Opportunity(contact1, Products.BOX, 120);
         Opportunity opportunity2 = new Opportunity(contact2, Products.HYBRID, 240);
 
-        assertTrue(opportunity1.getOpportunityId().equals("O 1"));
-        assertTrue(opportunity2.getOpportunityId().equals("O 2"));
+        assertTrue(opportunity1.getId().equals("O 1"));
+        assertTrue(opportunity2.getId().equals("O 2"));
 
     }
 
+    @Test //
+    void setOpportunityId() {
+        Opportunity opportunity1 = new Opportunity(contact1, Products.BOX, 120);
+
+        opportunity1.setId("2");
+        assertTrue(opportunity1.getId().equals("O 2"));
+        opportunity1.setId("3");
+        assertTrue(opportunity1.getId().equals("O 3"));
+
+
+    }
 
 }

@@ -17,11 +17,11 @@ class ContactTest {
         Contact cont2 = new Contact(lead2);
         Contact cont3 = new Contact(lead3);
 
-        assertTrue(cont1.getContactId().equals("C 1"));
-        assertTrue(cont2.getContactId().equals("C 2"));
-        assertTrue(cont3.getContactId().equals("C 3"));
+        assertTrue(cont1.getId().equals("C1"));
+        assertTrue(cont2.getId().equals("C2"));
+        assertTrue(cont3.getId().equals("C3"));
         Contact cont4 = new Contact(lead1);
-        assertTrue(cont4.getContactId().equals("C 4"));
+        assertTrue(cont4.getId().equals("C4"));
 
     }
 

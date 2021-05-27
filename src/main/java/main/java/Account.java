@@ -36,10 +36,10 @@ public class Account {
 
 
     //Create Ongoing ID
-    private static Integer idCounterL = 1;
+    private static Integer idCounterA = 1;
 
     public static Integer createID() {
-        return idCounterL++;
+        return idCounterA++;
     }
 
 
