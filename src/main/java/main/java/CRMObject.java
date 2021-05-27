@@ -10,13 +10,13 @@ public abstract class CRMObject {
         setGivenID(givenId);
     }
 
-//    Create ID method
-    private static Integer idCounter = 1;
+ //   Create ID method
+    protected static Integer idCounter;
 
-    public static Integer createID() {
-        return idCounter++;
-    }
-//    Getter and Setter
+    public Integer createID(){
+        return 0;
+    };
+  //  Getter and Setter
 
     public String getId() {
         return id;

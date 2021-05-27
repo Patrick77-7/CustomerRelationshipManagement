@@ -32,6 +32,19 @@ public class Opportunity extends CRMObject{
 
     //Getter and Setter
 
+    protected static Integer idCounter = 1;
+
+    @Override
+    public Integer createID() {
+        return idCounter++;
+    }
+
+    @Override
+    public String getInfo() {
+        return this.getId() + ";" + this.getDecisionMaker().getName() + ";" + this.getProduct() + ";" + this.getQuantity() + ";" + this.getStatus();
+    }
+
+
     public Contact getDecisionMaker() {
         return decisionMaker;
     }

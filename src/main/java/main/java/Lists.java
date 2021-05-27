@@ -2,6 +2,7 @@ package main.java;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Lists {
     private String name;
@@ -34,12 +35,11 @@ public class Lists {
     }
 
     // Show all List
-
-    public String showAllLeads(String classLetter) {
-        Integer lastId = this.CRMHashMap.size() + 1;
+    public String showAllInfo() {
+        Set<String> keys = this.CRMHashMap.keySet();
         String allInfo = "";
-        for (int i = 1; i < lastId; i++) {
-            allInfo = allInfo + this.CRMHashMap.get(classLetter + " " + i).getInfo() + "\n";
+        for (String key: keys) {
+            allInfo = allInfo + this.CRMHashMap.get(key).getInfo() + "\n";
         }
         return allInfo;
 
