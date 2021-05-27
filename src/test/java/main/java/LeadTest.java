@@ -38,19 +38,21 @@ class LeadTest {
 
     @Test
     void test3ToString(){
-        Lead lead6= new Lead("name","03012030xxxx","vorname.nachname@dkb.de","DKB");
+        Lead lead7= new Lead("name","03012030xxxx","vorname.nachname@dkb.de","DKB");
 
+        System.out.println(lead7.toString());
+        System.out.println(lead7.getId());
 
 
         String testString = "Lead{" +
-                    "Id='" + lead6.getId() + '\'' +
-                    ", Name ='" + lead6.getName() /*"name"*/ + '\'' +
-                    ", Phone Number='" + lead6.getPhoneNumber() /*"03012030xxxx" */ + '\'' +
-                    ", Email Address='" + lead6.getEmail()/*"vorname.nachname@dkb.de"*/ + '\'' +
-                    ", Company Name='" + lead6.getCompanyName() /*"DKB"*/ + '\'' +
+                    "Id='" + lead7.getId() + '\'' +
+                    ", Name ='" + lead7.getName() /*"name"*/ + '\'' +
+                    ", Phone Number='" + lead7.getPhoneNumber() /*"03012030xxxx" */ + '\'' +
+                    ", Email Address='" + lead7.getEmail()/*"vorname.nachname@dkb.de"*/ + '\'' +
+                    ", Company Name='" + lead7.getCompanyName() /*"DKB"*/ + '\'' +
                     '}';
 
-        assertTrue(lead6.toString().equals(testString));
+        assertTrue(lead7.toString().equals(testString));
     }
 
 }

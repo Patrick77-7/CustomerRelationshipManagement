@@ -27,7 +27,6 @@ public class Contact extends CRMObject{
     }
 
 
-
     @Override
     public String getInfo() {
         return this.getId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();

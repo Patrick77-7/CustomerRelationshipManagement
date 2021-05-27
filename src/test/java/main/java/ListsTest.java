@@ -38,11 +38,18 @@ class ListsTest {
         Opportunity o2 = new Opportunity(c1,Products.HYBRID,10);
         Opportunity o3 = new Opportunity(c1,Products.FLATBED,1);
 
+        Opportunity o4 = new Opportunity(c2,Products.BOX,1);
+        Opportunity o5 = new Opportunity(c2,Products.BOX,2);
+        Opportunity o6 = new Opportunity(c2,Products.BOX,3);
+
 
         Lists listsOpportunities = new Lists("OpportunityList");
         listsOpportunities.addToList(o1.getId(),o1);
         listsOpportunities.addToList(o2.getId(),o2);
         listsOpportunities.addToList(o3.getId(),o3);
+        listsOpportunities.addToList(o4.getId(),o4);
+        listsOpportunities.addToList(o5.getId(),o5);
+        listsOpportunities.addToList(o6.getId(),o6);
 
         System.out.println(listsOpportunities.showAllInfo());
         listsOpportunities.removeFromList(o1.getId());

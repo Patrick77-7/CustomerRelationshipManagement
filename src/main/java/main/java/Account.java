@@ -45,8 +45,6 @@ public class Account extends CRMObject {
         return idCounter++;
     }
 
-
-
     // getter + setter
 
     public String getAccountId() {

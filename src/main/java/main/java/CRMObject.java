@@ -19,7 +19,7 @@ public abstract class CRMObject {
   //  Getter and Setter
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public void setGivenID(String givenId) {
