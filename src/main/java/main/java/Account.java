@@ -13,13 +13,94 @@ contactList - a List of Contacts associated with this Account
 opportunityList - a list of Opportunities associated with this Account
 
  */
-public class Account {
+public class Account extends CRMObject {
 
-    private Integer accountId;
+    private String accountId;
     private Industry industry;
     private int employeeCount;
     private String city;
     private String country;
-    private ArrayList<Contact> contactList;
-    private ArrayList<Opportunity> opportunityList;
+    private ArrayList<Contact> contactList;  // muss gegen Lists-Objekt ausgetauscht werden
+    private ArrayList<Opportunity> opportunityList; // muss gegen Lists-Objekt ausgetauscht werden
+
+    public Account (String accountID, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+        super("A", accountID);
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+        this.contactList = contactList;
+        this.opportunityList = opportunityList;
+    }
+
+    public Account (Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+        super("A");
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+        this.contactList = contactList;
+        this.opportunityList = opportunityList;
+    }
+    public Account(){
+        super("A");
+    }
+
+
+    //Create Ongoing ID
+    private static Integer idCounter = 1;
+
+    public Integer createID() {
+        return idCounter++;
+    }
+
+    // getter + setter
+
+    public Industry getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(Industry industry) {
+        this.industry = industry;
+    }
+
+    public int getEmployeeCount() {
+        return employeeCount;
+    }
+
+    public void setEmployeeCount(int employeeCount) {
+        this.employeeCount = employeeCount;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public ArrayList<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(ArrayList<Contact> contactList) {
+        this.contactList = contactList;
+    }
+
+    public ArrayList<Opportunity> getOpportunityList() {
+        return opportunityList;
+    }
+
+    public void setOpportunityList(ArrayList<Opportunity> opportunityList) {
+        this.opportunityList = opportunityList;
+    }
 }

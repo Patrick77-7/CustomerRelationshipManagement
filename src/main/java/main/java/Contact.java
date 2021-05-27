@@ -1,35 +1,35 @@
 package main.java;
 
-public class Contact {
+public class Contact extends CRMObject{
 
-    private String contactId;
     private String name;
     private String phoneNumber;
     private String email;
     private String companyName;
 
-    private static Integer idCounterC = 1;
-
     public Contact(Lead lead){
-
+        super("C");
         this.name = lead.getName();
         this.email = lead.getEmail();
         this.companyName = lead.getCompanyName();
         this.phoneNumber = lead.getPhoneNumber();
-        setContactId();
     }
 
-    public static Integer createID() {
-        return idCounterC++;
+    public Contact(){
+        super("C");
     }
 
-    public void setContactId() {
-        Integer newId = createID();
-        this.contactId = "C " + newId;
+    protected static Integer idCounter = 1;
+
+    @Override
+    public Integer createID() {
+        return idCounter++;
     }
 
-    public void setContactId(String contactId) {
-        this.contactId = contactId;
+
+    @Override
+    public String getInfo() {
+        return this.getId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();
     }
 
     public String getName() {
@@ -46,10 +46,6 @@ public class Contact {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public String getContactId() {
-        return contactId;
     }
 
 }

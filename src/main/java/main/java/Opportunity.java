@@ -11,31 +11,73 @@ decisionMaker - a Contact
 status - an Enum with options OPEN, CLOSED_WON, CLOSED_LOST (these are common sales terms indicating an ongoing potential sale, a sale,
 and an opportunity where a sale was not made and the sale is no longer a possibility)
  */
-public class Opportunity {
+public class Opportunity extends CRMObject{
 
-    private String opportunityId;
     private Contact decisionMaker;
-    private Products truck;
+    private Products product;
     private Integer quantity;
-    private Status sold;
+    private Status status;
 
-    public Opportunity(Contact decisionMaker, Products truck, Integer quantity, Status sold) {
-        setOpportunityId();
+
+    public Opportunity(Contact decisionMaker, Products product, Integer quantity) {
+        super("O");
         this.decisionMaker = decisionMaker;
-        this.truck = truck;
+        this.product = product;
         this.quantity = quantity;
-        this.sold = sold;
+        this.status = Status.OPEN;
+    }
+    public Opportunity(){
+        super("O");
     }
 
-    private static Integer idCounterO = 1;
-
-    public static Integer createID() {
-        return idCounterO++;
+    public void closeOpportunityStatus(Status status){
+        setStatus(status);
     }
 
-    public void setOpportunityId() {
-        Integer newId = createID();
-        this.opportunityId = "C " + newId;
+    //Getter and Setter
+
+    protected static Integer idCounter = 1;
+
+    @Override
+    public Integer createID() {
+        return idCounter++;
     }
 
+    @Override
+    public String getInfo() {
+        return this.getId() + ";" + this.getDecisionMaker().getName() + ";" + this.getProduct() + ";" + this.getQuantity() + ";" + this.getStatus();
+    }
+
+
+    public Contact getDecisionMaker() {
+        return decisionMaker;
+    }
+
+    public void setDecisionMaker(Contact decisionMaker) {
+        this.decisionMaker = decisionMaker;
+    }
+
+    public Products getProduct() {
+        return product;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
