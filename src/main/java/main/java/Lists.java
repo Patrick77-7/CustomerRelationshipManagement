@@ -30,8 +30,16 @@ public class Lists {
     }
 
     //Show Info LookUpLead
+
     public String showInfo(String Id) {
-        return this.CRMHashMap.get(Id).getInfo();
+        String returnString = null;
+        try {
+            returnString = this.CRMHashMap.get(Id).getInfo();
+
+        } catch (NullPointerException e) {
+            System.out.println("Die Liste hat bisher keinen Inhalt");
+        }
+        return returnString;
     }
 
     // Show all List

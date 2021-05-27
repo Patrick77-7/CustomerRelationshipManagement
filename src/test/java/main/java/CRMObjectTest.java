@@ -24,5 +24,8 @@ class CRMObjectTest {
 
     @Test
     void setId() {
+        Lead lead5 = new Lead();
+        lead5.setId("L");
+        assertEquals("L5",lead5.getId());
     }
 }
