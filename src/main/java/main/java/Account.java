@@ -13,7 +13,7 @@ contactList - a List of Contacts associated with this Account
 opportunityList - a list of Opportunities associated with this Account
 
  */
-public class Account {
+public class Account extends CRMObject {
 
     private String accountId;
     private Industry industry;
@@ -24,8 +24,8 @@ public class Account {
     private ArrayList<Opportunity> opportunityList; // muss gegen Lists-Objekt ausgetauscht werden
 
 
-    public Account(Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
-        setAccountId();
+    public Account (Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+        super("A");
         this.industry = industry;
         this.employeeCount = employeeCount;
         this.city = city;
@@ -33,13 +33,16 @@ public class Account {
         this.contactList = contactList;
         this.opportunityList = opportunityList;
     }
+    public Account(){
+        super("A");
+    }
 
 
     //Create Ongoing ID
-    private static Integer idCounterA = 1;
+    private static Integer idCounter = 1;
 
-    public static Integer createID() {
-        return idCounterA++;
+    public Integer createID() {
+        return idCounter++;
     }
 
 
@@ -48,15 +51,6 @@ public class Account {
 
     public String getAccountId() {
         return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public void setAccountId() {
-        Integer newId = createID();
-        this.accountId = "A " + newId;
     }
 
     public Industry getIndustry() {

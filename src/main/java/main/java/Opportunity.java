@@ -30,6 +30,10 @@ public class Opportunity extends CRMObject{
         super("O");
     }
 
+    public void closeOpportunityStatus(Status status){
+        setStatus(status);
+    }
+
     //Getter and Setter
 
     protected static Integer idCounter = 1;

@@ -30,7 +30,6 @@ public abstract class CRMObject {
         Integer newID = createID();
         this.id = classLetter + newID;
     }
-
     public String getInfo(){
         return null;
     }

@@ -45,6 +45,8 @@ class ListsTest {
         listsOpportunities.addToList(o3.getId(),o3);
 
         System.out.println(listsOpportunities.showAllInfo());
+        listsOpportunities.removeFromList(o1.getId());
+        System.out.println(listsOpportunities.showAllInfo());
 
         //Opportunity opp1 = new Opportunity()
 

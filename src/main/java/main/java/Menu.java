@@ -4,14 +4,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 
     public Lists leadList;
+    public Lists contactList;
+    public Lists opportunityList;
+    public Lists accountList;
 
     public void showMenu() {
 
@@ -19,6 +19,10 @@ public class Menu {
         System.out.println("Welcome to CRM Application!");
 
         leadList = new Lists("Lead-List");
+        contactList = new Lists("Contact-List");
+        opportunityList = new Lists("Opportunity-List");
+        accountList = new Lists("Account-List");
+
 
         boolean exit = false;
 
@@ -33,19 +37,30 @@ public class Menu {
                 lead.createNewLead();
                 leadList.addToList(lead.getId(), lead);
             } else if (processRegionMatches("Show Leads", input)) {
-                //System.out.println(leadList.showInfoAllLeads());
+                System.out.println(leadList.showAllInfo());
             } else if (processRegionMatches("convert", input)) {
                 System.out.println("Type in ID of lead that is to be converted: ");
                 String IdInput = getStringInput();
-                //Lead lead = leadList.getCRMHashMap().get(IdInput);
-                //convertLeadToOpportunity(lead);
+                Lead l1= (Lead)leadList.CRMHashMap.get(IdInput);
+                convertLeadToOpportunity(l1);
             } else if (processRegionMatches("Lookup Lead Id", input)) {
                 System.out.println("Type in ID ");
                 String IdInput = getStringInput();
                 System.out.println(leadList.showInfo(IdInput));
-            } else if (processRegionMatches("exit", input)) {
+            }else if(processRegionMatches("close-lost", input)){
+                System.out.println("Type in the Opportunity ID ");
+                String IDInput = getStringInput();
+                Opportunity o1 = (Opportunity)opportunityList.CRMHashMap.get(IDInput);
+                o1.closeOpportunityStatus(Status.CLOSED_LOST);
+            }else if(processRegionMatches("close-won", input)){
+                System.out.println("Type in the Opportunity ID ");
+                String IDInput = getStringInput();
+                Opportunity o1 = (Opportunity)opportunityList.CRMHashMap.get(IDInput);
+                o1.closeOpportunityStatus(Status.CLOSED_WON);
+            }
+            else if (processRegionMatches("exit", input)) {
                 exit = true;
-                leadList.exportList();
+//                leadList.exportList();
             } else {
                 System.out.println("Input unknown");
             }
@@ -54,9 +69,11 @@ public class Menu {
     }
 
 
-    public Opportunity convertLeadToOpportunity(Lead lead) {
+    public void convertLeadToOpportunity(Lead lead) {
         Contact x = new Contact(lead); // needs to be added to Contact-List of an account?
         Products y = null;
+        leadList.removeFromList(lead.getId());
+        contactList.addToList(x.getId(),x);
         boolean inputRequiredProduct = false;
         while (inputRequiredProduct == !true) {
             System.out.println("Please insert the Type of Product the Customer is interested in:");
@@ -91,13 +108,33 @@ public class Menu {
                 System.out.println("Please Enter a Number");
             }
         }
-        Opportunity opportunity = new Opportunity(x, y, amountOfProducts); // needs to be added to an Opportunity-List of an Account?
-        leadList.removeFromList(lead.getId());
-        return opportunity;
+        Opportunity opportunity = new Opportunity(x, y, amountOfProducts);
+        opportunityList.addToList(opportunity.getId(),opportunity);
+        boolean inputRequiredAccount = false;
+        while(inputRequiredAccount == !true){
+            System.out.println("Do you want to create a new Account");
+            String answer = getStringInput();
+            switch (answer.toUpperCase(Locale.ROOT)){
+                case "YES" :
+                    createNewAccount(x, opportunity);
+                    inputRequiredAccount =true;
+                    break;
+                case "NO":
+                    System.out.println("Enter the Account ID");
+                    String accountID = getStringInput();
+                    Account a1 = (Account) accountList.CRMHashMap.get(accountID);
+                    a1.getContactList().add(x);
+                    a1.getOpportunityList().add(opportunity);
+                    inputRequiredAccount =true;
+                    break;
+                default:
+                    System.out.println("Please enter Yes or No!");
+            }
+        }
     }
 
 
-    public void createNewAccount(){
+    public void createNewAccount(Contact c1, Opportunity o1){
         System.out.println("Type in Industry: ");
         String industryInput = getStringInput();
         Industry y = null;
@@ -129,15 +166,15 @@ public class Menu {
         System.out.println("Type in country: ");
         String countryInput = getStringInput();
 
-        ArrayList<Contact> contactList = new ArrayList<>();  // ggf. austauschen mit Lists-Object
-        ArrayList<Opportunity> opportunityList = new ArrayList<>(); // ggf. austauschen mit Lists-Object
+        ArrayList<Contact> contactListOfAccount = new ArrayList<>();  // ggf. austauschen mit Lists-Object
+        ArrayList<Opportunity> opportunityListOfAccount = new ArrayList<>(); // ggf. austauschen mit Lists-Object
 
-        Account x = new Account(y, employeeCount, cityInput, countryInput, contactList, opportunityList);
+        opportunityListOfAccount.add(o1);
+        contactListOfAccount.add(c1);
+
+        Account x = new Account(y, employeeCount, cityInput, countryInput, contactListOfAccount, opportunityListOfAccount);
+        accountList.addToList(x.getAccountId(),x);
     }
-
-//    public void associateExistingAccount(){
-//
-//    }
 
 
     public static String getStringInput() {
