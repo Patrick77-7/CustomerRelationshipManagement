@@ -27,15 +27,8 @@ public class Menu {
             System.out.println("What would you like to do?");
             String input = getStringInput();
 
-
-            if (processRegionMatches("import list", input)) {
-                try {
-                    HashMap<String, Lead> z = leadList.importList();
-                    //leadList.setCRMHashMap(z);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else if (processRegionMatches("New Lead", input)) {
+    // ggf. switch draus machen
+            if (processRegionMatches("New Lead", input)) {
                 Lead lead = new Lead();
                 lead.createNewLead();
                 leadList.addToList(lead.getId(), lead);
