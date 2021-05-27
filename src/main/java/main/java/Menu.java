@@ -261,7 +261,7 @@ public class Menu {
         System.out.println("[new lead]          creates a new Lead");
         System.out.println("[show leads]        shows full List of Leads");
         System.out.println("[lookup lead id]    looks up any Lead by Id");
-        System.out.println("[convert lead]      converts Lead to Opportunity");
+        System.out.println("[convert]      converts Lead to Opportunity");
         System.out.println("[close-lost]        changes the Status of an Opportunity to lost");
         System.out.println("[close-won]         changes the Status of an Opportunity to won");
         System.out.println("[exit]              exits the Application");
