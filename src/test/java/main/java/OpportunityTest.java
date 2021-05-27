@@ -26,7 +26,7 @@ class OpportunityTest {
     }
 
     @Test //
-    void test2setOpportunityId() {
+    void testzzzz2setOpportunityId() {
         Opportunity opportunity1 = new Opportunity(contact1, Products.BOX, 120);
 
         opportunity1.setId("O");
@@ -34,6 +34,19 @@ class OpportunityTest {
         opportunity1.setId("O");
         assertTrue(opportunity1.getId().equals("O5"));
 
+
+    }
+
+    @Test
+    void test3setStatus(){
+        Opportunity opportunity3 = new Opportunity(contact1, Products.BOX, 120);
+        Opportunity opportunity4 = new Opportunity(contact2, Products.HYBRID, 240);
+
+        opportunity3.closeOpportunityStatus(Status.CLOSED_WON);
+        assertEquals(Status.CLOSED_WON,opportunity3.getStatus());
+
+        opportunity4.closeOpportunityStatus(Status.CLOSED_LOST);
+        assertEquals(Status.CLOSED_LOST,opportunity4.getStatus());
 
     }
 

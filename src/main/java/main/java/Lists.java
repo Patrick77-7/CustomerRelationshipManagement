@@ -94,4 +94,10 @@ public class Lists {
         this.name = name;
     }
 
+    public boolean validID(String ID){
+        //Gibt True wenn ID als ID vorhanden ist
+        //Gibt False wenn ID nicht als ID vorhanden ist
+        return true;
+    }
+
 }

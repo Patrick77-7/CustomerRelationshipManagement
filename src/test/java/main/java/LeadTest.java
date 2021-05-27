@@ -40,9 +40,6 @@ class LeadTest {
     void test3ToString(){
         Lead lead7= new Lead("name","03012030xxxx","vorname.nachname@dkb.de","DKB");
 
-        System.out.println(lead7.toString());
-        System.out.println(lead7.getId());
-
 
         String testString = "Lead{" +
                     "Id='" + lead7.getId() + '\'' +

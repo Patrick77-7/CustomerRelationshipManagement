@@ -20,7 +20,7 @@ public class Lead extends CRMObject {
     }
 
     public Lead(String leadId, String name, String phoneNumber, String email, String companyName) {
-        super("L", leadId);
+        super("L",leadId);
         setName(name);
         setEmail(email);
         setCompanyName(companyName);
@@ -64,7 +64,6 @@ public class Lead extends CRMObject {
         return this.getId() + ";" + this.getName() + ";" + this.getPhoneNumber() + ";" + this.getEmail() + ";" + this.getCompanyName();
     }
 
-
     public String getName() {
         return name;
     }
@@ -102,7 +101,7 @@ public class Lead extends CRMObject {
     @Override
     public String toString() {
         return "Lead{" +
-                "Id='" + leadId + '\'' +
+                "Id='" + this.getId() + '\'' +
                 ", Name ='" + name + '\'' +
                 ", Phone Number='" + phoneNumber + '\'' +
                 ", Email Address='" + email + '\'' +

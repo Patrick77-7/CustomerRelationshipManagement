@@ -120,7 +120,7 @@ public class Menu {
                     inputRequiredAccount =true;
                     break;
                 case "NO":
-                    System.out.println("Enter the Account ID");
+                    System.out.println("Enter the Account ID to which you want to add the information");
                     String accountID = getStringInput();
                     Account a1 = (Account) accountList.CRMHashMap.get(accountID);
                     a1.getContactList().add(x);
@@ -173,7 +173,7 @@ public class Menu {
         contactListOfAccount.add(c1);
 
         Account x = new Account(y, employeeCount, cityInput, countryInput, contactListOfAccount, opportunityListOfAccount);
-        accountList.addToList(x.getAccountId(),x);
+        accountList.addToList(x.getId(),x);
     }
 
 

@@ -1,7 +1,7 @@
 package main.java;
 
 public abstract class CRMObject {
-    private String id;
+    protected String id;
 
     public CRMObject(String classLetter) {
         setId(classLetter);
@@ -33,4 +33,5 @@ public abstract class CRMObject {
     public String getInfo(){
         return null;
     }
+
 }

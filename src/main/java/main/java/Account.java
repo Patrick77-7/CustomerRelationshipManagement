@@ -23,6 +23,15 @@ public class Account extends CRMObject {
     private ArrayList<Contact> contactList;  // muss gegen Lists-Objekt ausgetauscht werden
     private ArrayList<Opportunity> opportunityList; // muss gegen Lists-Objekt ausgetauscht werden
 
+    public Account (String accountID, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
+        super("A", accountID);
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+        this.contactList = contactList;
+        this.opportunityList = opportunityList;
+    }
 
     public Account (Industry industry, int employeeCount, String city, String country, ArrayList<Contact> contactList, ArrayList<Opportunity> opportunityList) {
         super("A");
@@ -46,10 +55,6 @@ public class Account extends CRMObject {
     }
 
     // getter + setter
-
-    public String getAccountId() {
-        return accountId;
-    }
 
     public Industry getIndustry() {
         return industry;
