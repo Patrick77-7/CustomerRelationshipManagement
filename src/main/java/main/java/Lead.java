@@ -3,7 +3,6 @@ package main.java;
 
 
 public class Lead extends CRMObject {
-    private String leadId;
     private String name;
     private String phoneNumber;
     private String email;

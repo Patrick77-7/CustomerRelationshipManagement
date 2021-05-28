@@ -58,4 +58,18 @@ class ListsTest {
         //Opportunity opp1 = new Opportunity()
 
     }
+
+    @Test
+    void testShowAllInfoWithoutContent(){
+        Lists lists1 = new Lists("List1");
+
+        lists1.showAllInfo();
+    }
+
+    @Test
+    void testShowInfoWithoutContent() {
+        Lists lists1 = new Lists("List1");
+
+        lists1.showInfo("L1");
+    }
 }

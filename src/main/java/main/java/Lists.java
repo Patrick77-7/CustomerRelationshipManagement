@@ -24,57 +24,37 @@ public class Lists {
         this.CRMHashMap.put(Id, object);
     }
 
-    //    remove from List
+    // remove from List
     public void removeFromList(String Id) {
         this.CRMHashMap.remove(Id);
     }
 
     //Show Info LookUpLead
+
     public String showInfo(String Id) {
-        return this.CRMHashMap.get(Id).getInfo();
+        String returnString = null;
+        try {
+            returnString = this.CRMHashMap.get(Id).getInfo();
+
+        } catch (NullPointerException e) {
+            System.out.println("List is empty");
+        }
+        return returnString;
     }
 
     // Show all List
     public String showAllInfo() {
         Set<String> keys = this.CRMHashMap.keySet();
-        String allInfo = "";
-        for (String key: keys) {
-            allInfo = allInfo + showInfo(key) + "\n";
+        if(keys.isEmpty()) {
+            return "List is empty";
+        } else {
+            String allInfo = "";
+            for (String key: keys) {
+                allInfo = allInfo + showInfo(key) + "\n";
+            }
+            return allInfo;
         }
-        return allInfo;
     }
-    // export List
-
-//    public void exportList() {
-//        FileWriter x;
-//        try {
-//            x = new FileWriter(this.getName());
-//            Integer lastId = this.CRMHashMap.size() + 1;
-//            for (int i = 1; i < lastId; i++) {
-//                x.write(this.CRMHashMap.get("L " + i).getInfo() + "\n");
-//            }
-////            x.write("\n" + "This list contains " + (lastId-1) + " leads");
-//            x.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    // import list
-
-//    public HashMap<String, Lead> importList() throws IOException {
-//        BufferedReader br = new BufferedReader(new FileReader(this.getName()));
-//        String line = null;
-//        HashMap<String, Lead> map = new HashMap<>();
-//        while ((line = br.readLine()).contains("L")) {
-//            String str[] = line.split(";");
-//            for (int i = 0; i < str.length; i++) {
-//                map.put(str[0], new Lead(str[0], str[1], str[2], str[3], str[4]));
-//            }
-//        }
-//        return map;
-//    }
-
 
     //Getter and Setter
 
@@ -95,9 +75,11 @@ public class Lists {
     }
 
     public boolean validID(String ID){
-        //Gibt True wenn ID als ID vorhanden ist
-        //Gibt False wenn ID nicht als ID vorhanden ist
-        return true;
+        boolean isValid = false;
+        if(this.CRMHashMap.containsKey(ID)){
+            isValid = true;
+        }
+        return isValid;
     }
 
 }
