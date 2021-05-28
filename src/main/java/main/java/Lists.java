@@ -37,7 +37,7 @@ public class Lists {
             returnString = this.CRMHashMap.get(Id).getInfo();
 
         } catch (NullPointerException e) {
-            System.out.println("Die Liste hat bisher keinen Inhalt");
+            System.out.println("List is empty");
         }
         return returnString;
     }
@@ -45,11 +45,15 @@ public class Lists {
     // Show all List
     public String showAllInfo() {
         Set<String> keys = this.CRMHashMap.keySet();
-        String allInfo = "";
-        for (String key: keys) {
-            allInfo = allInfo + showInfo(key) + "\n";
+        if(keys.isEmpty()) {
+            return "List is empty";
+        } else {
+            String allInfo = "";
+            for (String key: keys) {
+                allInfo = allInfo + showInfo(key) + "\n";
+            }
+            return allInfo;
         }
-        return allInfo;
     }
 
     //Getter and Setter

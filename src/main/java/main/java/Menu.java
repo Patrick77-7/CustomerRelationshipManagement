@@ -105,7 +105,7 @@ public class Menu {
         opportunityList.addToList(opportunity.getId(),opportunity);
         boolean inputRequiredAccount = false;
         while(!inputRequiredAccount){
-            System.out.println("Do you want to create a new Account");
+            System.out.println("Do you want to create a new Account: [Yes, No]");
             String answer = getStringInput();
             switch (answer.toUpperCase(Locale.ROOT)){
                 case "YES" :
@@ -113,7 +113,11 @@ public class Menu {
                     inputRequiredAccount =true;
                     break;
                 case "NO":
-                    System.out.println("Enter the Account ID to which you want to add the information"); // noch mal testen!
+                    if (accountList.showAllInfo().equals("List is empty")) {
+                        System.out.println("No Accounts found!");
+                    } else {
+
+                    System.out.println("Enter the Account ID to which you want to add the information");
                     String accountID = getStringInput();
                     while (!accountList.validID(accountID)){
                         System.out.println("ID not found! Type in existing Account ID ");
@@ -122,7 +126,7 @@ public class Menu {
                     Account a1 = (Account) accountList.CRMHashMap.get(accountID);
                     a1.getContactList().add(x);
                     a1.getOpportunityList().add(opportunity);
-                    inputRequiredAccount =true;
+                    inputRequiredAccount =true;}
                     break;
                 default:
                     System.out.println("Please enter Yes or No!");
@@ -131,13 +135,18 @@ public class Menu {
     }
 
     public void lookUpLeadId(){
-        System.out.println("Type in Lead ID ");
-        String IdInput = getStringInput();
-        while (!leadList.validID(IdInput)) {
-            System.out.println("ID not found! Type in existing Lead ID ");
-            IdInput = getStringInput();
+
+        if (leadList.showAllInfo().equals("List is empty")) {
+            System.out.println("No Leads found!");
+        } else {
+            System.out.println("Type in Lead ID ");
+            String IdInput = getStringInput();
+            while (!leadList.validID(IdInput)) {
+                System.out.println("ID not found! Type in existing Lead ID ");
+                IdInput = getStringInput();
+            }
+            System.out.println(leadList.showInfo(IdInput));
         }
-        System.out.println(leadList.showInfo(IdInput));
     }
 
     public void changeOpStatusToCloseLost(){
@@ -260,8 +269,8 @@ public class Menu {
         System.out.println("\n");
         System.out.println("[new lead]          creates a new Lead");
         System.out.println("[show leads]        shows full List of Leads");
-        System.out.println("[lookup lead id]    looks up any Lead by Id");
-        System.out.println("[convert]      converts Lead to Opportunity");
+        System.out.println("[lookup lead]       looks up any Lead by Id");
+        System.out.println("[convert]           converts Lead to Opportunity");
         System.out.println("[close-lost]        changes the Status of an Opportunity to lost");
         System.out.println("[close-won]         changes the Status of an Opportunity to won");
         System.out.println("[exit]              exits the Application");
